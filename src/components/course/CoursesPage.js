@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import * as courseActions from '../../actions/courseActions';
 
 class CoursesPage extends React.Component {
   constructor(props, context) {
@@ -18,7 +20,7 @@ class CoursesPage extends React.Component {
   }
 
   onClickSave() {
-   alert(`Saving ${this.state.course.title}`);
+   this.props.dispatch(courseActions.createCourse(this.state.course));
   }
 
   render() {
@@ -32,7 +34,7 @@ class CoursesPage extends React.Component {
           value={this.state.course.title} />
 
          <input
-           type="button"
+           type="submit"
            value="Save"
            onClick={this.onClickSave} />
       </div>
@@ -40,4 +42,10 @@ class CoursesPage extends React.Component {
   }
 }
 
-export default CoursesPage;
+function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses
+  };
+}
+
+export default connect(mapStateToProps)(CoursesPage);
