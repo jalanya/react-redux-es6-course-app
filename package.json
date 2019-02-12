@@ -1,6 +1,6 @@
 {
   "name": "react-redux-e6-course-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React and Redux, ES6 course app",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
